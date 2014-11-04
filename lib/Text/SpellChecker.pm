@@ -176,7 +176,7 @@ use MIME::Base64;
 use warnings;
 use strict;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 our $pre_hl_word = qq|<span style="background-color:red;color:white;font-weight:bold;">|;
 our $post_hl_word = "</span>";
@@ -266,7 +266,7 @@ sub next_word {
     pos $self->{text} = $self->{position};
     my $word;
     my $sp = $self->_hunspell || $self->_aspell || die "Could not make a speller with Text::Hunspell or Text::Aspell.";
-    while ($self->{text} =~ m/([a-zA-Z]+(?:'[a-zA-Z]+)?)/g) {
+    while ($self->{text} =~ m/\b(\p{L}+(?:'\p{L}+)?)/g) {
         $word = $1;
         next if $self->{ignore_list}{$word};
         last if !$sp->check($word);
