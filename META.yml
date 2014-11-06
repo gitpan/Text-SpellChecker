@@ -20,8 +20,8 @@ no_index:
 requires:
   MIME::Base64: '0'
   Storable: '0'
-  Text::Aspell: '0'
+  Text::Hunspell: '0'
   perl: '5.010001'
 resources:
   repository: https://github.com/bduggan/Text-SpellChecker.git
-version: '0.13'
+version: '0.14'
